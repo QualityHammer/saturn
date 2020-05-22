@@ -19,6 +19,8 @@ else()
   message("ccache not found")
 endif()
 
+find_package(glfw3 CONFIG REQUIRED)
+
 # Generate compile_commands.json for clang based tools
 set(CMAKE_EXPORT_COMPILE_COMMANDS ON)
 # Change executable output directory
