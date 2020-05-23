@@ -8,5 +8,6 @@ target_link_libraries(saturn_render
   glad
   glfw
   PRIVATE
+  saturn_logging
   project_options
   project_warnings)
