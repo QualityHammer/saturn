@@ -1,11 +1,13 @@
-#include "../logging/logging.hpp"
+#include "common/logging/log.hpp"
 #include "glfwInit.hpp"
 
 namespace Render {
 
 void renderInit() {
   if (!glfwInit()) {
-    Logging::logErr("glfw init failed.");
+    LOG_INFO(GLFW, "GLFW init failed");
+  } else {
+    LOG_INFO(GLFW, "GLFW init successful");
   }
 }
 

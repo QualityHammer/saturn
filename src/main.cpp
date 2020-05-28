@@ -1,7 +1,8 @@
 #include "render/glfwInit.hpp"
+#include "common/logging/log.hpp"
 
 int main(int argc, char* argv[]) {
-  GLFWwindow* window;
+  Log::initLogger();
   Render::renderInit();
   return 0;
 }
