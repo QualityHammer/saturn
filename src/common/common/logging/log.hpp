@@ -36,6 +36,16 @@ void logMessage(Class logClass, Level logLevel, const char* filename, u32 lineNu
 
 }// namespace Log
 
+#ifdef DEBUG
+#define LOG_TRACE(logClass, ...) \
+  ::Log::logMessage(::Log::Class::logClass, ::Log::Level::Trace, __FILE__, __LINE__, __func__, __VA_ARGS__)
+#define LOG_DEBUG(logClass, ...) \
+  ::Log::logMessage(::Log::Class::logClass, ::Log::Level::Debug, __FILE__, __LINE__, __func__, __VA_ARGS__)
+#else
+#define LOG_TRACE(logClass, ...) (void(0))
+#define LOG_DEBUG(logClass, ...) (void(0))
+#endif
+
 #define LOG_INFO(logClass, ...) \
   ::Log::logMessage(::Log::Class::logClass, ::Log::Level::Info, __FILE__, __LINE__, __func__, __VA_ARGS__)
 

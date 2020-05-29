@@ -78,6 +78,16 @@ void initLogger(const bool v) {
       consoleLogger = spdlog::stdout_color_mt<spdlog::async_factory>("saturn-console");
       loggers.push_back(consoleLogger);
     }
+#ifdef DEBUG
+    if (verbose)
+      fileLogger->set_level(spdlog::level::trace);
+    else
+      fileLogger->set_level(spdlog::level::debug);
+    consoleLogger->set_level(spdlog::level::debug);
+#else
+    fileLogger->set_level(spdlog::level::info);
+    consoleLogger->set_level(spdlog::level::info);
+#endif
   } catch (const spdlog::spdlog_ex& ex) {
     fmt::print("Log initialization failed: {}", ex.what());
   }

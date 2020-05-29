@@ -19,6 +19,7 @@ set_project_warnings(project_warnings)
 # Allow static analysis options
 include(cmake/StaticAnalyzers.cmake)
 
+option(DEBUG "Enable extra logging" OFF)
 option(BUILD_SHARED_LIBS "Enable compilation of shared libraries" OFF)
 option(ENABLE_TESTING "Enable test builds" ON)
 option(ENABLE_FUZZING "Enable fuzz test builds" OFF)
@@ -26,6 +27,10 @@ option(ENABLE_FUZZING "Enable fuzz test builds" OFF)
 # Run conan
 include (cmake/Conan.cmake)
 run_conan()
+
+if (DEBUG)
+  target_compile_definitions(project_options INTERFACE DEBUG)
+endif()
 
 if (ENABLE_TESTING)
   enable_testing()

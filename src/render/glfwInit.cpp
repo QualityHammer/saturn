@@ -5,9 +5,7 @@ namespace Render {
 
 void renderInit() {
   if (!glfwInit()) {
-    LOG_INFO(GLFW, "GLFW init failed");
-  } else {
-    LOG_INFO(GLFW, "GLFW init successful");
+    LOG_CRITICAL(GLFW, "GLFW init failed");
   }
 }
 
