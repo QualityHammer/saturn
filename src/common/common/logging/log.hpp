@@ -21,8 +21,10 @@ enum class Class : u8 {
   Count
 };
 
-void initLogger();
-void shudownLogger();
+static bool verbose {false};
+
+void initLogger(const bool v);
+void shutdownLogger();
 
 void _logMessage(Class logClass, Level logLevel, const char* filename, u32 lineNum,
   const char* func, const std::string msg);
