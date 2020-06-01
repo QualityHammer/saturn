@@ -18,6 +18,7 @@ macro(run_conan)
     fmt/6.2.0
     spdlog/1.6.0
     freetype/2.10.1
+    glm/0.9.9.8
     OPTIONS
     BASIC_SETUP
     CMAKE_TARGETS
