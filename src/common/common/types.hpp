@@ -1,6 +1,9 @@
 #pragma once
 
 #include <cstdint>
+#include <string>
+
+using String = std::string;
 
 using u8  = std::uint8_t;
 using u16 = std::uint16_t;

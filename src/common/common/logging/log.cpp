@@ -1,3 +1,5 @@
+#include "log.hpp"
+
 #include <array>
 #include <vector>
 
@@ -5,7 +7,8 @@
 #include <spdlog/spdlog.h>
 #include <spdlog/sinks/rotating_file_sink.h>
 #include <spdlog/sinks/stdout_color_sinks.h>
-#include "log.hpp"
+
+#include "common/types.hpp"
 
 namespace Log {
 
@@ -18,8 +21,9 @@ namespace {
 
   std::vector<LoggerType> loggers {};
 
-  const std::array<std::string, static_cast<u8>(Class::Count)> logClassNames {{"Log",
-    "GLFW"}};
+  const std::array<String, static_cast<u8>(Class::Count)> logClassNames {{"Log",
+    "GLFW",
+    "FreeType"}};
 
   constexpr const char* trimPath(std::string_view srcPath) {
     const auto rfind = [srcPath](const std::string_view match) {
@@ -32,8 +36,8 @@ namespace {
 }// namespace
 
 void _logMessage(Class logClass, Level logLevel, const char* filename, u32 lineNum,
-  const char* func, const std::string msg) {
-  const std::string logOutputMsg {fmt::format("[{}] |{} - {}:{}| {}",
+  const char* func, const String msg) {
+  const String logOutputMsg {fmt::format("[{}] |{} - {}:{}| {}",
     logClassNames[static_cast<u8>(logClass)],
     trimPath(filename),
     func,

@@ -17,6 +17,7 @@ macro(run_conan)
     catch2/2.12.1
     fmt/6.2.0
     spdlog/1.6.0
+    freetype/2.10.1
     OPTIONS
     BASIC_SETUP
     CMAKE_TARGETS
