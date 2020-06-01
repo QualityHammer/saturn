@@ -1,14 +1,12 @@
 #include "log.hpp"
 
-#include <array>
-#include <vector>
-
 #include <spdlog/async.h>
 #include <spdlog/spdlog.h>
 #include <spdlog/sinks/rotating_file_sink.h>
 #include <spdlog/sinks/stdout_color_sinks.h>
 
 #include "common/types.hpp"
+#include "common/containerTypes.hpp"
 
 namespace Log {
 
@@ -19,9 +17,9 @@ namespace {
   LoggerType fileLogger;
   LoggerType consoleLogger;
 
-  std::vector<LoggerType> loggers {};
+  Vector<LoggerType> loggers {};
 
-  const std::array<String, static_cast<u8>(Class::Count)> logClassNames {{"Log",
+  const Array<String, static_cast<u8>(Class::Count)> logClassNames {{"Log",
     "GLFW",
     "FreeType"}};
 
