@@ -40,4 +40,26 @@ void setFontSize(const u32 size) {
   LOG_DEBUG(FreeType, "Font size set to {}.", size);
 }
 
+Map<char, Character> rasterizeFont() {
+  Map<char, Character> characters {};
+  if (face == nullptr) {
+    LOG_ERROR(FreeType, "Font could not be rasterized, as no font is loaded.");
+    return characters;
+  }
+  // ASCII characters as test
+  for (unsigned char c {0}; c < 128; ++c) {
+    if (FT_Load_Char(face, c, FT_LOAD_RENDER)) {
+      LOG_ERROR(FreeType, "Failed to load glyph: {}", c);
+      continue;
+    }
+    Character character {0,
+      Array<int, 2> {static_cast<int>(face->glyph->bitmap.width), static_cast<int>(face->glyph->bitmap.rows)},
+      Array<int, 2> {face->glyph->bitmap_left, face->glyph->bitmap_top},
+      static_cast<u32>(face->glyph->advance.x)};
+    characters.insert(std::pair<char, Character>(c, character));
+  }
+  LOG_DEBUG(FreeType, "All characters have been rasterized.");
+  return characters;
+}
+
 }// namespace Rasterize

@@ -17,11 +17,12 @@ int main(int argc, char* argv[]) {
     }
   }
 
-  const String font {"/Users/ryan/Library/Fonts/DejaVu Sans Mono for Powerline.ttf"};
+  const String font {"test_fonts/DejaVuSans.ttf"};
   Log::initLogger(verbose);
   Rasterize::initFreeType();
   Rasterize::loadFont(font);
   Rasterize::setFontSize(48);
+  Rasterize::rasterizeFont();
   Render::renderInit();
   Log::shutdownLogger();
   return 0;

@@ -23,8 +23,6 @@ enum class Class : u8 {
   Count
 };
 
-static bool verbose {false};
-
 void initLogger(const bool v);
 void shutdownLogger();
 

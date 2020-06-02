@@ -14,6 +14,7 @@ using LoggerType = std::shared_ptr<spdlog::logger>;
 
 namespace {
 
+  bool verbose;
   LoggerType fileLogger;
   LoggerType consoleLogger;
 
