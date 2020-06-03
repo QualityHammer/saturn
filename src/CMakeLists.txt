@@ -1,12 +1,15 @@
 add_subdirectory(common/common)
 add_subdirectory(rasterizer)
 add_subdirectory(render)
+add_subdirectory(core)
 
 add_executable(${PROJECT_NAME} main.cpp)
+
 target_link_libraries(${PROJECT_NAME}
   PRIVATE
   project_options
   project_warnings
   saturn_render
   saturn_rasterizer
-  saturn_common)
+  saturn_common
+  saturn_core)

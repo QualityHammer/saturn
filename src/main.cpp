@@ -1,9 +1,7 @@
 #include <unistd.h>
 
 #include "common/logging/log.hpp"
-#include "rasterizer/rasterizer.hpp"
-#include "render/renderInit.hpp"
-#include "render/window.hpp"
+#include "core/core.hpp"
 
 int main(int argc, char* argv[]) {
   int opt;
@@ -18,15 +16,9 @@ int main(int argc, char* argv[]) {
     }
   }
 
-  const String font {"test_fonts/DejaVuSans.ttf"};
   Log::initLogger(verbose);
-  Rasterize::initFreeType();
-  Rasterize::loadFont(font);
-  Rasterize::setFontSize(48);
-  Rasterize::rasterizeFont();
-  Render::renderInit();
-  Render::Window window {};
-  Render::gladInit();
+  Core::Core core {};
+  core.run();
   Log::shutdownLogger();
   return 0;
 }
