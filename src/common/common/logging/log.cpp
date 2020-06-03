@@ -22,6 +22,7 @@ namespace {
 
   const Array<String, static_cast<u8>(Class::Count)> logClassNames {{"Log",
     "GLFW",
+    "GLAD",
     "FreeType"}};
 
   constexpr const char* trimPath(std::string_view srcPath) {
@@ -82,14 +83,15 @@ void initLogger(const bool v) {
       loggers.push_back(consoleLogger);
     }
 #ifdef DEBUG
-    if (verbose)
+    if (verbose) {
       fileLogger->set_level(spdlog::level::trace);
-    else
+      consoleLogger->set_level(spdlog::level::debug);
+    } else
       fileLogger->set_level(spdlog::level::debug);
-    consoleLogger->set_level(spdlog::level::debug);
 #else
     fileLogger->set_level(spdlog::level::info);
-    consoleLogger->set_level(spdlog::level::info);
+    if (verbose)
+      consoleLogger->set_level(spdlog::level::info);
 #endif
   } catch (const spdlog::spdlog_ex& ex) {
     fmt::print("Log initialization failed: {}", ex.what());

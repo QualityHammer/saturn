@@ -1,8 +1,9 @@
 #include <unistd.h>
 
-#include "rasterizer/rasterizer.hpp"
-#include "render/glfwInit.hpp"
 #include "common/logging/log.hpp"
+#include "rasterizer/rasterizer.hpp"
+#include "render/renderInit.hpp"
+#include "render/window.hpp"
 
 int main(int argc, char* argv[]) {
   int opt;
@@ -24,6 +25,8 @@ int main(int argc, char* argv[]) {
   Rasterize::setFontSize(48);
   Rasterize::rasterizeFont();
   Render::renderInit();
+  Render::Window window {};
+  Render::gladInit();
   Log::shutdownLogger();
   return 0;
 }

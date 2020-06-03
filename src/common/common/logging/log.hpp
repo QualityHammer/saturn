@@ -19,6 +19,7 @@ enum class Level : u8 {
 enum class Class : u8 {
   Log,
   GLFW,
+  GLAD,
   FreeType,
   Count
 };

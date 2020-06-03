@@ -1,13 +1,18 @@
 add_library(saturn_render
-  glfwMain.hpp
-  glfwInit.hpp
-  glfwInit.cpp)
+  renderMain.hpp
+  renderInit.hpp
+  renderInit.cpp
+  window.hpp
+  window.cpp
+  glfwCallbacks.hpp
+  glfwCallbacks.cpp)
 
 target_link_libraries(saturn_render
-  PUBLIC
+  PRIVATE
   glad
   glfw
-  PRIVATE
+  dl
+  CONAN_PKG::glm
   project_options
   project_warnings
   saturn_common)
