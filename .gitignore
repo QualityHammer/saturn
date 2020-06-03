@@ -5,6 +5,9 @@ out/*
 # Log folder
 logs/*
 
+# Sourcetrail
+*.srctrl*
+
 # Prerequisites
 *.d
 
