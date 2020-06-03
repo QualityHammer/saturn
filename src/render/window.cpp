@@ -31,7 +31,14 @@ void Window::pollEvents() {
   glfwPollEvents();
 }
 
-void Window::swapBuffers() {
+void Window::processInput() {
+  if (glfwGetKey(m_mainWindow, GLFW_KEY_ESCAPE) == GLFW_PRESS)
+    glfwSetWindowShouldClose(m_mainWindow, true);
+}
+
+void Window::render() {
+  glClearColor(0.2f, 0.3f, 0.3f, 1.0f);
+  glClear(GL_COLOR_BUFFER_BIT);
   glfwSwapBuffers(m_mainWindow);
 }
 

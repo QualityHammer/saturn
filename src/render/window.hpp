@@ -12,7 +12,8 @@ public:
 
   bool isClosed() const;
   void pollEvents();
-  void swapBuffers();
+  void processInput();
+  void render();
 
 private:
   GLFWwindow* m_mainWindow;

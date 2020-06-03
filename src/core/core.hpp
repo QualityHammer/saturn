@@ -13,7 +13,7 @@ public:
   void run();
 
 private:
-  Render::Window m_mainWindow;
+  Render::Window m_window;
 };
 
 }// namespace Core

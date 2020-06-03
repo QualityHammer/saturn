@@ -6,7 +6,7 @@
 namespace Core {
 
 Core::Core() :
-  m_mainWindow {} {
+  m_window {} {
   const String font {"test_fonts/DejaVuSans.ttf"};
   Rasterize::initFreeType();
   Rasterize::loadFont(font);
@@ -19,9 +19,10 @@ Core::~Core() {
 }
 
 void Core::run() {
-  while (!m_mainWindow.isClosed()) {
-    m_mainWindow.swapBuffers();
-    m_mainWindow.pollEvents();
+  while (!m_window.isClosed()) {
+    m_window.processInput();
+    m_window.render();
+    m_window.pollEvents();
   }
 }
 
