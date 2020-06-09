@@ -1,7 +1,7 @@
 #include <unistd.h>
 
-#include "render/glfwInit.hpp"
 #include "common/logging/log.hpp"
+#include "editor/runEditor.hpp"
 
 int main(int argc, char* argv[]) {
   int opt;
@@ -17,7 +17,7 @@ int main(int argc, char* argv[]) {
   }
 
   Log::initLogger(verbose);
-  Render::renderInit();
+  Saturn::runEditor();
   Log::shutdownLogger();
   return 0;
 }

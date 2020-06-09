@@ -1,7 +1,8 @@
 #pragma once
 
 #include <fmt/format.h>
-#include "../types.hpp"
+
+#include "common/types.hpp"
 
 namespace Log {
 
@@ -18,16 +19,16 @@ enum class Level : u8 {
 enum class Class : u8 {
   Log,
   GLFW,
+  GLAD,
+  FreeType,
   Count
 };
-
-static bool verbose {false};
 
 void initLogger(const bool v);
 void shutdownLogger();
 
 void _logMessage(Class logClass, Level logLevel, const char* filename, u32 lineNum,
-  const char* func, const std::string msg);
+  const char* func, const String msg);
 
 template<typename... Args>
 void logMessage(Class logClass, Level logLevel, const char* filename, u32 lineNum, const char* func, const Args&... args) {
