@@ -13,6 +13,12 @@ namespace Render {
     }
     LOG_DEBUG(GLAD, "GLAD init successful");
     glViewport(0, 0, 800, 600);
+
+    // disable byte-alignment restriction
+    glPixelStorei(GL_UNPACK_ALIGNMENT, 1);
+    // enable blending
+    glEnable(GL_BLEND);
+    glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
   }
 
   void renderInit() {
