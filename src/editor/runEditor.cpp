@@ -1,6 +1,7 @@
 #include "runEditor.hpp"
 
 #include "core.hpp"
+#include "common/logging/log.hpp"
 
 namespace Saturn {
 

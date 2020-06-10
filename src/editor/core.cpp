@@ -22,7 +22,7 @@ EditorCore::~EditorCore() {
 void EditorCore::events() {
   m_window.pollEvents();
   m_window.processInput();
-  if (!m_window.isClosed())
+  if (m_window.isClosed())
     closed = true;
 }
 
