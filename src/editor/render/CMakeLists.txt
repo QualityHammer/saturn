@@ -5,7 +5,9 @@ add_library(saturn_render
   window.hpp
   window.cpp
   glfwCallbacks.hpp
-  glfwCallbacks.cpp)
+  glfwCallbacks.cpp
+  loadFont.hpp
+  loadFont.cpp)
 
 target_link_libraries(saturn_render
   PRIVATE
@@ -15,4 +17,5 @@ target_link_libraries(saturn_render
   CONAN_PKG::glm
   project_options
   project_warnings
+  saturn_rasterizer
   saturn_common)

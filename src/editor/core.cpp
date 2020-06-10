@@ -2,18 +2,20 @@
 
 #include "rasterizer/rasterizer.hpp"
 #include "render/renderInit.hpp"
+#include "render/loadFont.hpp"
 
 namespace Saturn {
 
 EditorCore::EditorCore() :
   closed {false},
-  m_window {} {
+  m_window {},
+  m_fontChars {} {
+  Render::gladInit();
   const String font {"test_fonts/DejaVuSans.ttf"};
   Rasterize::initFreeType();
   Rasterize::loadFont(font);
   Rasterize::setFontSize(48);
-  Rasterize::rasterizeFont();
-  Render::gladInit();
+  Rasterize::loadFont(m_fontChars);
 }
 
 EditorCore::~EditorCore() {

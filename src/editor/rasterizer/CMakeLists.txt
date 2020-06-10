@@ -3,8 +3,9 @@ add_library(saturn_rasterizer
   rasterizer.cpp)
 
 target_link_libraries(saturn_rasterizer
-  PRIVATE
+  PUBLIC
   CONAN_PKG::freetype
+  PRIVATE
   project_options
   project_warnings
   saturn_common)

@@ -1,5 +1,7 @@
 #pragma once
 
+#include "common/character.hpp"
+#include "common/containerTypes.hpp"
 #include "render/window.hpp"
 
 namespace Saturn {
@@ -17,6 +19,7 @@ public:
 
 private:
   Render::Window m_window;
+  Map<char, Character> m_fontChars;
 };
 
 }// namespace Saturn
