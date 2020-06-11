@@ -6,7 +6,7 @@
 namespace Saturn {
 namespace Rasterize {
 
-  int loadFont(Map<char, Character>& characters);
+  int loadFont(const String& fontPath, const u16 fontSize, Map<char, Character>& characters);
 
 }
 }// namespace Saturn

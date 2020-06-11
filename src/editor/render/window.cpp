@@ -80,7 +80,7 @@ namespace Render {
       LOG_GL();
       glDrawArrays(GL_TRIANGLES, 0, 6);
       LOG_GL();
-      x += (ch.offset >> 6);
+      x += static_cast<int>(ch.offset);
     }
     glBindVertexArray(0);
     LOG_GL();

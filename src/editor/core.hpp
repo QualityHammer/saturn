@@ -1,5 +1,6 @@
 #pragma once
 
+#include "common/types.hpp"
 #include "common/character.hpp"
 #include "common/containerTypes.hpp"
 #include "render/shader.hpp"
@@ -17,10 +18,11 @@ public:
   void render();
 
   bool closed;
+  String fontPath;
 
 private:
-  Render::Window m_window;
   Map<char, Character> m_fontChars;
+  Render::Window m_window;
   Render::Shader m_shader;
   unsigned int VAO, VBO;
 };

@@ -8,15 +8,12 @@ namespace Saturn {
 
 EditorCore::EditorCore() :
   closed {false},
-  m_window {},
+  fontPath {"test_fonts/DejaVuSans.ttf"},
   m_fontChars {},
+  m_window {},
   m_shader {"font.vert", "font.frag"} {
   Render::createProjection(m_shader);
-  const String font {"test_fonts/DejaVuSans.ttf"};
-  Rasterize::initFreeType();
-  Rasterize::loadFont(font);
-  Rasterize::setFontSize(14);
-  Rasterize::loadFont(m_fontChars);
+  Rasterize::loadFont(fontPath, 14, m_fontChars);
   Render::initAlloc(VAO, VBO);
 }
 

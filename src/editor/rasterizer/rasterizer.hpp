@@ -18,8 +18,8 @@ namespace Rasterize {
 
   void freeFreeType();
   void initFreeType();
-  void loadFont(const String& path);
-  void setFontSize(const u32 size);
+  int loadFontFace(const String& fontPath);
+  int setFontSize(const u32 size);
   int rasterizeChar(unsigned char c, RasterizedGlyph& glyph);
 
 }// namespace Rasterize
