@@ -1,7 +1,6 @@
 #pragma once
 
-#include <ft2build.h>
-#include FT_FREETYPE_H
+#include <memory>
 
 #include "common/types.hpp"
 #include "common/character.hpp"
@@ -10,10 +9,18 @@
 namespace Saturn {
 namespace Rasterize {
 
+  struct RasterizedGlyph {
+    u32 width, rows;
+    s32 left, top;
+    std::unique_ptr<unsigned char[]> buffer;
+    s64 advancex;
+  };
+
+  void freeFreeType();
   void initFreeType();
   void loadFont(const String& path);
   void setFontSize(const u32 size);
-  int rasterizeChar(unsigned char c, FT_GlyphSlot glyph);
+  int rasterizeChar(unsigned char c, RasterizedGlyph& glyph);
 
 }// namespace Rasterize
 }// namespace Saturn

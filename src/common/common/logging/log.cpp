@@ -23,7 +23,8 @@ namespace {
   const Array<String, static_cast<u8>(Class::Count)> logClassNames {{"Log",
     "GLFW",
     "GLAD",
-    "FreeType"}};
+    "FreeType",
+    "OpenGL"}};
 
   constexpr const char* trimPath(std::string_view srcPath) {
     const auto rfind = [srcPath](const std::string_view match) {

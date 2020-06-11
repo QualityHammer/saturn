@@ -2,6 +2,7 @@
 
 #include "common/character.hpp"
 #include "common/containerTypes.hpp"
+#include "render/shader.hpp"
 #include "render/window.hpp"
 
 namespace Saturn {
@@ -20,6 +21,8 @@ public:
 private:
   Render::Window m_window;
   Map<char, Character> m_fontChars;
+  Render::Shader m_shader;
+  unsigned int VAO, VBO;
 };
 
 }// namespace Saturn

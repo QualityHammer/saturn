@@ -5,7 +5,7 @@
 
 struct Character {
   u32 textureID;
-  Array<int, 2> size;
-  Array<int, 2> bearing;
-  u32 offset;
+  Array<u32, 2> size;
+  Array<s32, 2> bearing;
+  s64 offset;
 };

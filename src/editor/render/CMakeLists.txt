@@ -7,7 +7,9 @@ add_library(saturn_render
   glfwCallbacks.hpp
   glfwCallbacks.cpp
   loadFont.hpp
-  loadFont.cpp)
+  loadFont.cpp
+  shader.hpp
+  shader.cpp)
 
 target_link_libraries(saturn_render
   PRIVATE
