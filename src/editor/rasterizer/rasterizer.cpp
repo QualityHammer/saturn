@@ -69,7 +69,7 @@ namespace Rasterize {
     glyph.left     = face->glyph->bitmap_left;
     glyph.top      = face->glyph->bitmap_top;
     glyph.advancex = face->glyph->advance.x >> 6;
-    glyph.buffer   = std::make_unique<unsigned char[]>(bufLen);
+    glyph.buffer   = Vector<unsigned char>(bufLen);
     for (u32 h {0}; h < glyph.rows; ++h) {
       for (u32 w {0}; w < glyph.width; ++w) {
         glyph.buffer[h * glyph.width + w] = face->glyph->bitmap.buffer[h * static_cast<u32>(face->glyph->bitmap.pitch) + w];

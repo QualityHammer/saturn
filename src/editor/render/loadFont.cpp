@@ -37,7 +37,7 @@ namespace Rasterize {
           0,
           GL_RED,
           GL_UNSIGNED_BYTE,
-          glyph.buffer.get());
+          glyph.buffer.data());
         LOG_GL();
         glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_CLAMP_TO_EDGE);
         LOG_GL();
