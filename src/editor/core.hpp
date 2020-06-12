@@ -23,8 +23,6 @@ public:
 private:
   Map<char, Character> m_fontChars;
   Render::Window m_window;
-  Render::Shader m_shader;
-  unsigned int VAO, VBO;
 };
 
 }// namespace Saturn

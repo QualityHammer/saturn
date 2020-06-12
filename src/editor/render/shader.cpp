@@ -12,7 +12,8 @@
 namespace Saturn {
 namespace Render {
 
-  Shader::Shader(const String& vertexPath, const String& fragmentPath) {
+  Shader::Shader(const String& vertexPath, const String& fragmentPath) :
+    ID {0} {
     String vertexCode;
     String fragmentCode;
     std::ifstream vFile;
@@ -53,6 +54,15 @@ namespace Render {
     glDeleteShader(vertex);
     glDeleteShader(fragment);
     LOG_DEBUG(OpenGL, "Shader program created");
+  }
+
+  Shader::~Shader() {
+    //GLuint shaders[2];
+    //GLsizei count;
+    //glGetAttachedShaders(ID, 2, &count, shaders);
+    //for (const auto& sh : shaders)
+    //glDetachShader(ID, sh);
+    //glDeleteProgram(ID);
   }
 
   void Shader::use() const {

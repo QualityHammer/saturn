@@ -9,6 +9,7 @@ namespace Render {
   {
   public:
     Shader(const String& vertexPath, const String& fragmentPath);
+    ~Shader();
 
     void use() const;
 

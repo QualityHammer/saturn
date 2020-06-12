@@ -64,18 +64,18 @@ namespace Rasterize {
   }// namespace
 
   int loadFont(const String& fontPath, const u16 fontSize, Map<char, Character>& characters) {
-    Rasterize::initFreeType();
-    int fileSuccess {Rasterize::loadFontFace(fontPath)};
+    initFreeType();
+    int fileSuccess {loadFontFace(fontPath)};
     switch (fileSuccess) {
     case 1:
     case 2: {
-      Rasterize::freeFreeType();
+      freeFreeType();
       return fileSuccess;
     }
     default:
       break;
     };
-    if (Rasterize::setFontSize(fontSize))
+    if (setFontSize(fontSize))
       return 3;
     if (writeFontToGPU(characters))
       return 4;
@@ -83,5 +83,16 @@ namespace Rasterize {
   }
 
 }// namespace Rasterize
+
+namespace Render {
+
+  void deleteCharacterTextures(Map<char, Character>& characters) {
+    for (const auto& pair : characters) {
+      glDeleteTextures(1, &pair.second.textureID);
+    }
+    characters.clear();
+  }
+
+}// namespace Render
 }// namespace Saturn
 

@@ -38,9 +38,9 @@ function (enable_sanitizers target)
   if(LIST_OF_SANITIZERS)
     if(NOT "${LIST_OF_SANITIZERS}" STREQUAL "")
       target_compile_options(${target}
-                             INTERFACE -fsanitize=${LIST_OF_SANITIZERS})
+        INTERFACE -fsanitize=${LIST_OF_SANITIZERS})
       target_link_libraries(${target}
-                            INTERFACE -fsanitize=${LIST_OF_SANITIZERS})
+        INTERFACE -fsanitize=${LIST_OF_SANITIZERS})
     endif()
   endif()
 

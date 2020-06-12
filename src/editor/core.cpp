@@ -10,14 +10,12 @@ EditorCore::EditorCore() :
   closed {false},
   fontPath {"test_fonts/DejaVuSans.ttf"},
   m_fontChars {},
-  m_window {},
-  m_shader {"font.vert", "font.frag"} {
-  Render::createProjection(m_shader);
+  m_window {m_fontChars} {
   Rasterize::loadFont(fontPath, 14, m_fontChars);
-  Render::initAlloc(VAO, VBO);
 }
 
 EditorCore::~EditorCore() {
+  Render::deleteCharacterTextures(m_fontChars);
 }
 
 void EditorCore::events() {
@@ -28,7 +26,7 @@ void EditorCore::events() {
 }
 
 void EditorCore::render() {
-  m_window.render(m_shader, m_fontChars, VAO, VBO);
+  m_window.render();
 }
 
 }// namespace Saturn

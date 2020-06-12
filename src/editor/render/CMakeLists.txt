@@ -9,7 +9,10 @@ add_library(saturn_render
   loadFont.hpp
   loadFont.cpp
   shader.hpp
-  shader.cpp)
+  shader.cpp
+  renderText.hpp
+  renderText.cpp
+  glLog.hpp)
 
 target_link_libraries(saturn_render
   PRIVATE
