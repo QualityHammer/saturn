@@ -26,7 +26,7 @@ namespace Render {
   }
 
   void Window::bindShader() const {
-    m_shader.use();
+    m_shader.bind();
   }
 
   GLFWwindow* Window::createWindow() {

@@ -11,7 +11,7 @@ namespace Render {
     Shader(const String& vertexPath, const String& fragmentPath);
     ~Shader();
 
-    void use() const;
+    void bind() const;
 
     unsigned int ID;
 

@@ -7,6 +7,7 @@
 #include <glm/glm.hpp>
 
 #include "common/logging/log.hpp"
+#include "glLog.hpp"
 #include "renderMain.hpp"
 
 namespace Saturn {
@@ -38,18 +39,28 @@ namespace Render {
     const char* fCode {fragmentCode.c_str()};
     unsigned int vertex, fragment;
     vertex = glCreateShader(GL_VERTEX_SHADER);
+    LOG_GL();
     glShaderSource(vertex, 1, &vCode, NULL);
+    LOG_GL();
     glCompileShader(vertex);
+    LOG_GL();
     checkCompileErrors(vertex, "VERTEX");
     fragment = glCreateShader(GL_FRAGMENT_SHADER);
+    LOG_GL();
     glShaderSource(fragment, 1, &fCode, NULL);
+    LOG_GL();
     glCompileShader(fragment);
+    LOG_GL();
     checkCompileErrors(fragment, "FRAGMENT");
 
     ID = glCreateProgram();
+    LOG_GL();
     glAttachShader(ID, vertex);
+    LOG_GL();
     glAttachShader(ID, fragment);
+    LOG_GL();
     glLinkProgram(ID);
+    LOG_GL();
     checkCompileErrors(ID, "PROGRAM");
     glDeleteShader(vertex);
     glDeleteShader(fragment);
@@ -57,15 +68,17 @@ namespace Render {
   }
 
   Shader::~Shader() {
-    //GLuint shaders[2];
-    //GLsizei count;
-    //glGetAttachedShaders(ID, 2, &count, shaders);
-    //for (const auto& sh : shaders)
-    //glDetachShader(ID, sh);
-    //glDeleteProgram(ID);
+    GLuint shaders[2];
+    GLsizei count;
+    glGetAttachedShaders(ID, 2, &count, shaders);
+    LOG_GL();
+    for (const auto& sh : shaders)
+      glDetachShader(ID, sh);
+    glDeleteProgram(ID);
+    LOG_GL();
   }
 
-  void Shader::use() const {
+  void Shader::bind() const {
     glUseProgram(ID);
   }
 

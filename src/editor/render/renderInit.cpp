@@ -35,7 +35,7 @@ namespace Render {
 
   void createProjection(const Shader& shader) {
     glm::mat4 projection {glm::ortho(0.0f, 800.0f, 0.0f, 600.0f)};
-    shader.use();
+    shader.bind();
     glUniformMatrix4fv(glGetUniformLocation(shader.ID, "projection"), 1, GL_FALSE, glm::value_ptr(projection));
     LOG_GL();
   }
