@@ -4,14 +4,14 @@
 #include "common/containerTypes.hpp"
 #include "common/character.hpp"
 #include "shader.hpp"
+#include "frameClock.hpp"
 
 struct GLFWwindow;
 
 namespace Saturn {
 namespace Render {
 
-  class Window
-  {
+  class Window {
   public:
     Window(const Map<char, Character>& characters);
     ~Window();
@@ -25,11 +25,13 @@ namespace Render {
     void render();
 
     u32 VAO, VBO;
+    int t;
 
   private:
     const Map<char, Character>& m_characters;
     GLFWwindow* m_mainWindow;
     const Shader m_shader;
+    FrameClock m_clock;
 
     GLFWwindow* createWindow();
   };

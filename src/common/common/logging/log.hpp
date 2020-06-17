@@ -22,6 +22,7 @@ enum class Class : u8 {
   GLAD,
   FreeType,
   OpenGL,
+  FrameClock,
   Count
 };
 

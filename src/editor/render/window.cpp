@@ -11,9 +11,11 @@ namespace Saturn {
 namespace Render {
 
   Window::Window(const Map<char, Character>& characters) :
+    t {0},
     m_characters {characters},
     m_mainWindow {createWindow()},
-    m_shader {"font.vert", "font.frag"} {
+    m_shader {"font.vert", "font.frag"},
+    m_clock {60} {
     createProjection(m_shader);
   }
 
@@ -57,7 +59,7 @@ namespace Render {
   }
 
   void Window::pollEvents() {
-    glfwPollEvents();
+    glfwWaitEvents();
   }
 
   void Window::processInput() {
@@ -66,14 +68,17 @@ namespace Render {
   }
 
   void Window::render() {
-    glClearColor(1.0f, 1.0f, 1.0f, 1.0f);
-    glClear(GL_COLOR_BUFFER_BIT);
-    LOG_GL();
+    if (m_clock.shouldRenderFrame()) {
+      glClearColor(1.0f, 1.0f, 1.0f, 1.0f);
+      glClear(GL_COLOR_BUFFER_BIT);
+      LOG_GL();
 
-    const String text {"Hello this is a test"};
-    renderText(*this, text, 30, 200, 1.0);
+      const String text[2] {"Hello this is a test", "This is another longer test this time"};
+      renderText(*this, text[t], 30, 200, 1.0);
+      t = !t;
 
-    glfwSwapBuffers(m_mainWindow);
+      glfwSwapBuffers(m_mainWindow);
+    }
   }
 
 }// namespace Render
