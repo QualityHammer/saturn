@@ -67,17 +67,6 @@ namespace Render {
     LOG_DEBUG(OpenGL, "Shader program created");
   }
 
-  Shader::~Shader() {
-    GLuint shaders[2];
-    GLsizei count;
-    glGetAttachedShaders(ID, 2, &count, shaders);
-    LOG_GL();
-    for (const auto& sh : shaders)
-      glDetachShader(ID, sh);
-    glDeleteProgram(ID);
-    LOG_GL();
-  }
-
   void Shader::bind() const {
     glUseProgram(ID);
   }

@@ -5,11 +5,9 @@
 namespace Saturn {
 namespace Render {
 
-  class Shader
-  {
+  class Shader {
   public:
     Shader(const String& vertexPath, const String& fragmentPath);
-    ~Shader();
 
     void bind() const;
 
