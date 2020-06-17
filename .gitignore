@@ -9,6 +9,9 @@ logs/*
 # Sourcetrail
 *.srctrl*
 
+# Ctags
+tags
+
 # Prerequisites
 *.d
 
