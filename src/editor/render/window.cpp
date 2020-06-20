@@ -14,8 +14,7 @@ namespace Render {
     t {0},
     m_characters {characters},
     m_mainWindow {createWindow()},
-    m_shader {"font.vert", "font.frag"},
-    m_clock {60} {
+    m_shader {"font.vert", "font.frag"} {
     createProjection(m_shader);
   }
 
@@ -68,17 +67,15 @@ namespace Render {
   }
 
   void Window::render() {
-    if (m_clock.shouldRenderFrame()) {
-      glClearColor(1.0f, 1.0f, 1.0f, 1.0f);
-      glClear(GL_COLOR_BUFFER_BIT);
-      LOG_GL();
+    glClearColor(1.0f, 1.0f, 1.0f, 1.0f);
+    glClear(GL_COLOR_BUFFER_BIT);
+    LOG_GL();
 
-      const String text[2] {"Hello this is a test", "This is another longer test this time"};
-      renderText(*this, text[t], 30, 200, 1.0);
-      t = !t;
+    const String text[2] {"Hello this is a test", "This is another longer test this time"};
+    renderText(*this, text[t], 30, 200, 1.0);
+    t = !t;
 
-      glfwSwapBuffers(m_mainWindow);
-    }
+    glfwSwapBuffers(m_mainWindow);
   }
 
 }// namespace Render

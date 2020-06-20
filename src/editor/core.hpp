@@ -5,11 +5,11 @@
 #include "common/containerTypes.hpp"
 #include "render/shader.hpp"
 #include "render/window.hpp"
+#include "render/clock.hpp"
 
 namespace Saturn {
 
-class EditorCore
-{
+class EditorCore {
 public:
   EditorCore();
   ~EditorCore();
@@ -23,6 +23,7 @@ public:
 private:
   Map<char, Character> m_fontChars;
   Render::Window m_window;
+  Clock m_clock;
 };
 
 }// namespace Saturn
