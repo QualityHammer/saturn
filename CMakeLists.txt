@@ -16,6 +16,10 @@ add_library(project_warnings INTERFACE)
 include(cmake/CompilerWarnings.cmake)
 set_project_warnings(project_warnings)
 
+# sanitizer options if supported by compiler
+include(cmake/Sanitizers.cmake)
+enable_sanitizers(project_options)
+
 # Allow static analysis options
 include(cmake/StaticAnalyzers.cmake)
 

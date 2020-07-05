@@ -1,45 +1,82 @@
 #include "window.hpp"
 
 #include "common/logging/log.hpp"
+#include "glLog.hpp"
 #include "renderMain.hpp"
 #include "renderInit.hpp"
 #include "glfwCallbacks.hpp"
+#include "renderText.hpp"
 
+namespace Saturn {
 namespace Render {
 
-Window::Window() {
-  renderInit();
-  m_mainWindow = glfwCreateWindow(800, 600, "saturn", NULL, NULL);
-  if (m_mainWindow == nullptr) {
-    LOG_CRITICAL(GLFW, "Failed to create GLFW window");
-    glfwTerminate();
-  } else {
-    glfwMakeContextCurrent(m_mainWindow);
-    glfwSetFramebufferSizeCallback(m_mainWindow, Callbacks::framebuffer_size_callback);
+  Window::Window(const Map<char, Character>& characters) :
+    t {0},
+    m_characters {characters},
+    m_mainWindow {createWindow()},
+    m_shader {"font.vert", "font.frag"} {
+    createProjection(m_shader);
   }
-}
 
-Window::~Window() {
-  glfwTerminate();
-}
+  Window::~Window() {
+    glDeleteVertexArrays(1, &VAO);
+    glDeleteBuffers(1, &VBO);
+    glfwDestroyWindow(m_mainWindow);
+    m_mainWindow = nullptr;
+    glfwTerminate();
+  }
 
-bool Window::isClosed() const {
-  return glfwWindowShouldClose(m_mainWindow);
-}
+  void Window::bindShader() const {
+    m_shader.bind();
+  }
 
-void Window::pollEvents() {
-  glfwPollEvents();
-}
+  GLFWwindow* Window::createWindow() {
+    renderInit();
+    GLFWwindow* win {glfwCreateWindow(800, 600, "saturn", NULL, NULL)};
+    if (win == nullptr) {
+      LOG_CRITICAL(GLFW, "Failed to create GLFW window");
+      glfwTerminate();
+    } else {
+      glfwMakeContextCurrent(win);
+      glfwSetFramebufferSizeCallback(win, Callbacks::framebuffer_size_callback);
+      gladInit();
+      initAlloc(VAO, VBO);
+    }
+    return win;
+  }
 
-void Window::processInput() {
-  if (glfwGetKey(m_mainWindow, GLFW_KEY_ESCAPE) == GLFW_PRESS)
-    glfwSetWindowShouldClose(m_mainWindow, true);
-}
+  const Character& Window::getCharacter(const char& c) const {
+    return m_characters.at(c);
+  }
 
-void Window::render() {
-  glClearColor(0.2f, 0.3f, 0.3f, 1.0f);
-  glClear(GL_COLOR_BUFFER_BIT);
-  glfwSwapBuffers(m_mainWindow);
-}
+  const u32& Window::getShaderID() const {
+    return m_shader.ID;
+  }
+
+  bool Window::isClosed() const {
+    return glfwWindowShouldClose(m_mainWindow);
+  }
+
+  void Window::pollEvents() {
+    glfwWaitEvents();
+  }
+
+  void Window::processInput() {
+    if (glfwGetKey(m_mainWindow, GLFW_KEY_ESCAPE) == GLFW_PRESS)
+      glfwSetWindowShouldClose(m_mainWindow, true);
+  }
+
+  void Window::render() {
+    glClearColor(1.0f, 1.0f, 1.0f, 1.0f);
+    glClear(GL_COLOR_BUFFER_BIT);
+    LOG_GL();
+
+    const String text[2] {"Hello this is a test", "This is another longer test this time"};
+    renderText(*this, text[t], 30, 200, 1.0);
+    t = !t;
+
+    glfwSwapBuffers(m_mainWindow);
+  }
 
 }// namespace Render
+}// namespace Saturn

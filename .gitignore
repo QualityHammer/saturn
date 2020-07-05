@@ -1,12 +1,16 @@
 # Build folders
 build/*
 out/*
+release/*
 
 # Log folder
 logs/*
 
 # Sourcetrail
 *.srctrl*
+
+# Ctags
+tags
 
 # Prerequisites
 *.d

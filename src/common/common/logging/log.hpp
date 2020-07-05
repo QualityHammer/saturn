@@ -21,6 +21,8 @@ enum class Class : u8 {
   GLFW,
   GLAD,
   FreeType,
+  OpenGL,
+  Clock,
   Count
 };
 

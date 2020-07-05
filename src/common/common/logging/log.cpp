@@ -23,7 +23,9 @@ namespace {
   const Array<String, static_cast<u8>(Class::Count)> logClassNames {{"Log",
     "GLFW",
     "GLAD",
-    "FreeType"}};
+    "FreeType",
+    "OpenGL",
+    "FrameClock"}};
 
   constexpr const char* trimPath(std::string_view srcPath) {
     const auto rfind = [srcPath](const std::string_view match) {
@@ -76,10 +78,10 @@ void _logMessage(Class logClass, Level logLevel, const char* filename, u32 lineN
 void initLogger(const bool v) {
   verbose = v;
   try {
-    fileLogger = spdlog::rotating_logger_mt<spdlog::async_factory>("saturn", "logs/log.txt", 1048576 * 5, 3);
+    fileLogger = spdlog::rotating_logger_st("saturn", "logs/log.txt", 1048576 * 5, 3);
     loggers.push_back(fileLogger);
     if (verbose) {
-      consoleLogger = spdlog::stdout_color_mt<spdlog::async_factory>("saturn-console");
+      consoleLogger = spdlog::stdout_color_st("saturn-console");
       loggers.push_back(consoleLogger);
     }
 #ifdef DEBUG
