@@ -10,7 +10,8 @@ EditorCore::EditorCore() :
   closed {false},
   fontPath {"test_fonts/DejaVuSans.ttf"},
   m_fontChars {},
-  m_window {m_fontChars} {
+  m_window {m_fontChars},
+  m_clock {60} {
   Rasterize::loadFont(fontPath, 14, m_fontChars);
 }
 
@@ -26,7 +27,8 @@ void EditorCore::events() {
 }
 
 void EditorCore::render() {
-  m_window.render();
+  if (m_clock.shouldRenderFrame())
+    m_window.render();
 }
 
 }// namespace Saturn

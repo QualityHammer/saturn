@@ -4,7 +4,6 @@
 #include "common/containerTypes.hpp"
 #include "common/character.hpp"
 #include "shader.hpp"
-#include "frameClock.hpp"
 
 struct GLFWwindow;
 
@@ -31,7 +30,6 @@ namespace Render {
     const Map<char, Character>& m_characters;
     GLFWwindow* m_mainWindow;
     const Shader m_shader;
-    FrameClock m_clock;
 
     GLFWwindow* createWindow();
   };

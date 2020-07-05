@@ -12,8 +12,8 @@ add_library(saturn_render
   shader.cpp
   renderText.hpp
   renderText.cpp
-  frameClock.hpp
-  frameClock.cpp
+  clock.hpp
+  clock.cpp
   glLog.hpp)
 
 target_link_libraries(saturn_render
