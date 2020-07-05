@@ -1,7 +1,7 @@
 #include <unistd.h>
 
 #include "common/logging/log.hpp"
-#include "editor/runEditor.hpp"
+#include "ide/runIDE.hpp"
 
 int main(int argc, char* argv[]) {
   int opt;
@@ -17,7 +17,7 @@ int main(int argc, char* argv[]) {
   }
 
   Log::initLogger(verbose);
-  Saturn::runEditor();
+  Saturn::runIDE();
   Log::shutdownLogger();
   return 0;
 }

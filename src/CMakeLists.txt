@@ -1,5 +1,5 @@
 add_subdirectory(common/common)
-add_subdirectory(editor)
+add_subdirectory(ide)
 
 add_executable(${PROJECT_NAME} main.cpp)
 

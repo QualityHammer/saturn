@@ -9,10 +9,10 @@
 
 namespace Saturn {
 
-class EditorCore {
+class IDECore {
 public:
-  EditorCore();
-  ~EditorCore();
+  IDECore();
+  ~IDECore();
 
   void events();
   void render();

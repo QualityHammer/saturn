@@ -1,12 +1,12 @@
-#include "runEditor.hpp"
+#include "runIDE.hpp"
 
 #include "core.hpp"
 #include "common/logging/log.hpp"
 
 namespace Saturn {
 
-void runEditor() {
-  EditorCore core {};
+void runIDE() {
+  IDECore core {};
   while (!core.closed) {
     core.events();
     core.render();

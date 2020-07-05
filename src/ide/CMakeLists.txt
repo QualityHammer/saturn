@@ -4,8 +4,8 @@ add_subdirectory(render)
 add_library(saturn_core
   core.cpp
   core.hpp
-  runEditor.cpp
-  runEditor.hpp)
+  runIDE.cpp
+  runIDE.hpp)
 
 target_link_libraries(saturn_core
   PRIVATE

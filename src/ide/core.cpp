@@ -6,7 +6,7 @@
 
 namespace Saturn {
 
-EditorCore::EditorCore() :
+IDECore::IDECore() :
   closed {false},
   fontPath {"test_fonts/DejaVuSans.ttf"},
   m_fontChars {},
@@ -15,18 +15,18 @@ EditorCore::EditorCore() :
   Rasterize::loadFont(fontPath, 14, m_fontChars);
 }
 
-EditorCore::~EditorCore() {
+IDECore::~IDECore() {
   Render::deleteCharacterTextures(m_fontChars);
 }
 
-void EditorCore::events() {
+void IDECore::events() {
   m_window.pollEvents();
   m_window.processInput();
   if (m_window.isClosed())
     closed = true;
 }
 
-void EditorCore::render() {
+void IDECore::render() {
   if (m_clock.shouldRenderFrame())
     m_window.render();
 }

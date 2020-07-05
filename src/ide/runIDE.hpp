@@ -2,6 +2,6 @@
 
 namespace Saturn {
 
-void runEditor();
+void runIDE();
 
 }
