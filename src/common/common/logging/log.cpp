@@ -103,6 +103,8 @@ void initLogger(const bool v) {
 void shutdownLogger() {
   spdlog::shutdown();
   fileLogger = nullptr;
+  if (consoleLogger != nullptr)
+    consoleLogger = nullptr;
 }
 
 }// namespace Log
