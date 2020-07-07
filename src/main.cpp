@@ -3,20 +3,28 @@
 #include "common/logging/log.hpp"
 #include "ide/runIDE.hpp"
 
-int main(int argc, char* argv[]) {
-  int opt;
+struct CMDArgs {
   bool verbose {false};
+};
+
+void getArgs(int argc, char* argv[], CMDArgs& cmdArgs) {
+  int opt;
   while ((opt = getopt(argc, argv, "v")) != -1) {
     switch (opt) {
     case 'v':
-      verbose = true;
+      cmdArgs.verbose = true;
       break;
     default:
       break;
     }
   }
+}
 
-  Log::initLogger(verbose);
+int main(int argc, char* argv[]) {
+  CMDArgs cmdArgs;
+  getArgs(argc, argv, cmdArgs);
+
+  Log::initLogger(cmdArgs.verbose);
   Saturn::runIDE();
   Log::shutdownLogger();
   return 0;
