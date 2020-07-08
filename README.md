@@ -1,5 +1,5 @@
 # saturn
-Saturn is an IDE project in very early development. 
+"Saturn" is an IDE project in very early development. 
 
 The main goal of the project is to see if it's possible to create a very minimal IDE that can be easily expanded to a developer's desire with powerful plugins/addons. 
 
