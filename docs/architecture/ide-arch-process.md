@@ -2,7 +2,7 @@
 The process for the "Saturn" architecture is an infinite loop that only ends when the user closes the window. Each iteration of that loop is described here.
 
 ## Current IDE Architecture
-Described in more detail [here](ide-arch.md).
+Described in more detail [here](ide-arch.md).  
 ![IDE Architecture V0.1](../charts/V0.1-Architecture.jpg)  
 
 #### Rendering Synchronization
